@@ -43,9 +43,8 @@ public class Reportes {
         for (int i = 0; i < mat.length; i++) {
             String row = "<tr>";
             for (int j = 0; j < mat[0].length; j++) {
-                
-                    row += "<td>" + mat[i][j] + "</td>";
-                
+
+                row += "<td>" + mat[i][j] + "</td>";
 
             }
             row += "</tr>";
@@ -71,28 +70,27 @@ public class Reportes {
         mat[0][2] = "Edad";
         mat[0][3] = "Genero";
 
-        for (int i = 1,conta=1; i < mat.length; conta++,i++) {
-            if(CargaAlumno.id[conta]==0){conta++;}
+        for (int i = 1, conta = 1; i < mat.length; conta++, i++) {
+            if (CargaAlumno.id[conta] == 0) {
+                conta++;
+            }
             for (int j = 0; j < 4; j++) {
 
-                
-                    if (j == 0) {
+                if (j == 0) {
 
-                        mat[i][j] = String.valueOf(CargaAlumno.carnet[conta]);
+                    mat[i][j] = String.valueOf(CargaAlumno.carnet[conta]);
 
-                    }
-                    if (j == 1) {
+                }
+                if (j == 1) {
 
-                        mat[i][j] = CargaAlumno.nombre[conta];
-                    }
-                    if (j == 2) {
-                        mat[i][j] = String.valueOf(CargaAlumno.edad[conta]);
-                    }
-                    if (j == 3) {
-                        mat[i][j] = CargaAlumno.genero[conta];
-                    }
-               
-                
+                    mat[i][j] = CargaAlumno.nombre[conta];
+                }
+                if (j == 2) {
+                    mat[i][j] = String.valueOf(CargaAlumno.edad[conta]);
+                }
+                if (j == 3) {
+                    mat[i][j] = CargaAlumno.genero[conta];
+                }
 
             }
         }
@@ -109,101 +107,15 @@ public class Reportes {
     }
 
     public void ReporteAsignacionAlumnos() {
-
-        AsiganrAlumnos us = new AsiganrAlumnos();
-        us.DatosAsignados();
-
-        int cont = 0;
-        for (int i = 1; i < CargaAlumno.id.length; i++) {
-            if (CargaAlumno.id[i] != 0) {
-                cont++;
-            }
-        }
-        String[][] mat = new String[cont][5];
-        mat[0][0] = "Carnet";
-        mat[0][1] = "Nombre";
-        mat[0][2] = "Codigo";
-        mat[0][3] = "Nombre del Curso";
-        mat[0][4] = "Fecha";
-
-        for (int i = 1; i < mat.length; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (j == 0) {
-                    mat[i][j] = String.valueOf(CargaAlumno.carnet[i]);
-                }
-                if (j == 1) {
-                    mat[i][j] = CargaAlumno.nombre[i];
-                }
-                if (j == 2) {
-                    mat[i][j] = String.valueOf(CargaCursos.codigo[i]);
-                }
-                if (j == 3) {
-                    mat[i][j] = CargaCursos.nombrec[i];
-                }
-                if (j == 4) {
-                    mat[i][j] = CargaCursos.Guardadofecha;
-                }
-            }
-        }
-
-        String nombreReporte = "Reporte DE Asignacion de Alumnos";
-        String htmlBody = generateHTMLForMat(mat);
-        System.out.println(htmlBody);
-        reporte = "<html><head><link rel=\"stylesheet\"href=\"css/styles.css\"><title>Reporte</title><h1>" + nombreReporte + "</h1>"
-                + "</head><body>" + htmlBody + "</body></html>";
-
-        createFile("C:\\Users\\lopez\\Desktop\\reporte.html");
-        System.out.println("Reporte generado exitosamente ");
-
     }
 
     public void AsignacionProfesores() {
 
-        int cont = 0;
-        for (int i = 1; i < CargaAlumno.id.length; i++) {
-            if (CargaAlumno.id[i] != 0) {
-                cont++;
-            }
-        }
-        String[][] mat = new String[cont][5];
-        mat[0][0] = "Carnet";
-        mat[0][1] = "Nombre";
-        mat[0][2] = "Codigo";
-        mat[0][3] = "Nombre del Curso";
-        mat[0][4] = "Fecha";
-
-        for (int i = 1; i < mat.length; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (j == 0) {
-                    mat[i][j] = String.valueOf(CargaAlumno.carnet[i]);
-                }
-                if (j == 1) {
-                    mat[i][j] = CargaAlumno.nombre[i];
-                }
-                if (j == 2) {
-                    mat[i][j] = String.valueOf(CargaCursos.codigo[i]);
-                }
-                if (j == 3) {
-                    mat[i][j] = CargaCursos.nombrec[i];
-                }
-                if (j == 4) {
-                    mat[i][j] = CargaCursos.Guardadofecha;
-                }
-            }
-        }
-
-        String nombreReporte = "Reporte DE Asignacion de Alumnos";
-        String htmlBody = generateHTMLForMat(mat);
-        System.out.println(htmlBody);
-        reporte = "<html><head><link rel=\"stylesheet\"href=\"css/styles.css\"><title>Reporte</title><h1>" + nombreReporte + "</h1>"
-                + "</head><body>" + htmlBody + "</body></html>";
-
-        createFile("C:\\Users\\lopez\\Desktop\\reporte.html");
-        System.out.println("Reporte generado exitosamente ");
-
     }
 
     public void ReporteGeneralCursos() {
+        
+        
     }
 
     public void Reportecursoespecifico() {
