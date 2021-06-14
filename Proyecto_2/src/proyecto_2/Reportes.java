@@ -39,10 +39,14 @@ public class Reportes {
     //body
     public static String generateHTMLForMat(String[][] mat) {
         String tabla = "<table>";
+
         for (int i = 0; i < mat.length; i++) {
             String row = "<tr>";
             for (int j = 0; j < mat[0].length; j++) {
-                row += "<td>" + mat[i][j] + "</td>";
+                
+                    row += "<td>" + mat[i][j] + "</td>";
+                
+
             }
             row += "</tr>";
             tabla += row;
@@ -62,26 +66,34 @@ public class Reportes {
             }
         }
         String[][] mat = new String[cont][4];
-        mat[0][0] = "ID";
+        mat[0][0] = "Carne";
         mat[0][1] = "Nombre";
         mat[0][2] = "Edad";
         mat[0][3] = "Genero";
-        
-        
-        for (int i = 1; i < mat.length; i++) {
+
+        for (int i = 1,conta=1; i < mat.length; conta++,i++) {
+            if(CargaAlumno.id[conta]==0){conta++;}
             for (int j = 0; j < 4; j++) {
+
+                
                     if (j == 0) {
-                        mat[i][j] = String.valueOf(CargaAlumno.id[i]);
+
+                        mat[i][j] = String.valueOf(CargaAlumno.carnet[conta]);
+
                     }
                     if (j == 1) {
-                        mat[i][j] = CargaAlumno.nombre[i];
+
+                        mat[i][j] = CargaAlumno.nombre[conta];
                     }
                     if (j == 2) {
-                        mat[i][j]=String.valueOf(CargaAlumno.edad[i]);
+                        mat[i][j] = String.valueOf(CargaAlumno.edad[conta]);
                     }
                     if (j == 3) {
-                        mat[i][j] = CargaAlumno.genero[i];
-                    }    
+                        mat[i][j] = CargaAlumno.genero[conta];
+                    }
+               
+                
+
             }
         }
 
@@ -95,11 +107,13 @@ public class Reportes {
         System.out.println("Reporte generado exitosamente ");
 
     }
-    
-    
-    public void ReporteAsignacionAlumnos(){
-    
-    int cont = 0;
+
+    public void ReporteAsignacionAlumnos() {
+
+        AsiganrAlumnos us = new AsiganrAlumnos();
+        us.DatosAsignados();
+
+        int cont = 0;
         for (int i = 1; i < CargaAlumno.id.length; i++) {
             if (CargaAlumno.id[i] != 0) {
                 cont++;
@@ -110,26 +124,25 @@ public class Reportes {
         mat[0][1] = "Nombre";
         mat[0][2] = "Codigo";
         mat[0][3] = "Nombre del Curso";
-        mat[0][4]= "Fecha";
-        
-        
+        mat[0][4] = "Fecha";
+
         for (int i = 1; i < mat.length; i++) {
             for (int j = 0; j < 5; j++) {
-                    if (j == 0) {
-                        mat[i][j] = String.valueOf(CargaAlumno.carnet[i]);
-                    }
-                    if (j == 1) {
-                        mat[i][j] = CargaAlumno.nombre[i];
-                    }
-                    if (j == 2) {
-                        mat[i][j]=String.valueOf(CargaCursos.codigo[i]);
-                    }
-                    if (j == 3) {
-                        mat[i][j] = CargaCursos.nombrec[i];
-                    }   
-                    if (j == 4) {
-                        mat[i][j] = CargaCursos.Guardadofecha;
-                    }
+                if (j == 0) {
+                    mat[i][j] = String.valueOf(CargaAlumno.carnet[i]);
+                }
+                if (j == 1) {
+                    mat[i][j] = CargaAlumno.nombre[i];
+                }
+                if (j == 2) {
+                    mat[i][j] = String.valueOf(CargaCursos.codigo[i]);
+                }
+                if (j == 3) {
+                    mat[i][j] = CargaCursos.nombrec[i];
+                }
+                if (j == 4) {
+                    mat[i][j] = CargaCursos.Guardadofecha;
+                }
             }
         }
 
@@ -141,16 +154,12 @@ public class Reportes {
 
         createFile("C:\\Users\\lopez\\Desktop\\reporte.html");
         System.out.println("Reporte generado exitosamente ");
-    
-    
-    
-    
+
     }
-    
-    public void AsignacionProfesores (){
-    
-        
-    int cont = 0;
+
+    public void AsignacionProfesores() {
+
+        int cont = 0;
         for (int i = 1; i < CargaAlumno.id.length; i++) {
             if (CargaAlumno.id[i] != 0) {
                 cont++;
@@ -161,26 +170,25 @@ public class Reportes {
         mat[0][1] = "Nombre";
         mat[0][2] = "Codigo";
         mat[0][3] = "Nombre del Curso";
-        mat[0][4]= "Fecha";
-        
-        
+        mat[0][4] = "Fecha";
+
         for (int i = 1; i < mat.length; i++) {
             for (int j = 0; j < 5; j++) {
-                    if (j == 0) {
-                        mat[i][j] = String.valueOf(CargaAlumno.carnet[i]);
-                    }
-                    if (j == 1) {
-                        mat[i][j] = CargaAlumno.nombre[i];
-                    }
-                    if (j == 2) {
-                        mat[i][j]=String.valueOf(CargaCursos.codigo[i]);
-                    }
-                    if (j == 3) {
-                        mat[i][j] = CargaCursos.nombrec[i];
-                    }   
-                    if (j == 4) {
-                        mat[i][j] = CargaCursos.Guardadofecha;
-                    }
+                if (j == 0) {
+                    mat[i][j] = String.valueOf(CargaAlumno.carnet[i]);
+                }
+                if (j == 1) {
+                    mat[i][j] = CargaAlumno.nombre[i];
+                }
+                if (j == 2) {
+                    mat[i][j] = String.valueOf(CargaCursos.codigo[i]);
+                }
+                if (j == 3) {
+                    mat[i][j] = CargaCursos.nombrec[i];
+                }
+                if (j == 4) {
+                    mat[i][j] = CargaCursos.Guardadofecha;
+                }
             }
         }
 
@@ -192,13 +200,16 @@ public class Reportes {
 
         createFile("C:\\Users\\lopez\\Desktop\\reporte.html");
         System.out.println("Reporte generado exitosamente ");
-    
-    
+
     }
-    public void ReporteGeneralCursos(){}
-    public void Reportecursoespecifico(){}
-    public void Top5(){}
-    
-    
+
+    public void ReporteGeneralCursos() {
+    }
+
+    public void Reportecursoespecifico() {
+    }
+
+    public void Top5() {
+    }
 
 }
